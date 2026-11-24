@@ -1,14 +1,21 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+const isDark = ref(false)
 
-const btnRef = ref()
-
-const handleClick = () => {
-  console.log('click', btnRef.value)
+const toggleDark = () => {
+  isDark.value = !isDark.value
+  document.documentElement.classList.toggle('dark', isDark.value)
 }
 </script>
 
 <template>
-  <HelloWorld/>
-  <el-button ref="btnRef" @click="handleClick">aaaa</el-button>
+  <div class="app">
+    <el-button type="primary" @click="toggleDark">切换暗黑模式</el-button>
+  </div>
 </template>
+
+<style scoped lang="scss">
+.app {
+  padding: 24px;
+  width: $sidebar-width;
+}
+</style>
